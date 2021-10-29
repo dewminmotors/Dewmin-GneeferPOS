@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Invoice</ion-title>
+    <ion-button color="danger" slot="end" (click)="closeBTN()">
+      <ion-icon  name="close"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+
+<div id="invoice-POS">
+  <div id="top" style="text-align: center;">
+    <div class="info"> 
+      <h2>Dewmin Motor House</h2>
+    </div><!--End Info-->
+  </div><!--End InvoiceTop-->
+  
+  <div id="mid">
+    <div class="info">
+      <h2>Contact Info</h2>
+      <p> 
+          Address : No.465, Madampe Road, Kuliyapitiya<br>
+          Phone   : 076-1196090<br>
+          Phone   : 076-3221531<br>
+      </p>
+    </div>
+  </div><!--End Invoice Mid-->
+  
+  <div id="bot">
+
+        <div id="table" style="color: black;">
+          <table>
+            <tr class="tabletitle">
+              <td class="item"><h2>Item</h2></td>
+              <td class="Hours" ><h2>Qty</h2></td>
+             <!-- <td class="Hours" ><h2>Discount</h2></td>-->
+              <td class="Hours"><h2>Sub Total</h2></td>
+            </tr>
+
+            <tr class="service" *ngFor="let item of apiCalls.cartItems">
+              <td *ngIf="apiCalls.cartInfo[item.name] > 0" class="tableitem"><p class="itemtext">{{item.name}} <span *ngIf="apiCalls.cardInfo_discount[item.name] > 0"> *</span></p></td>
+              <td *ngIf="apiCalls.cartInfo[item.name] > 0" class="tableitem"><p class="itemtext">{{apiCalls.cartInfo[item.name]}}</p></td>
+              <!-- <td class="tableitem"><p class="itemtext">{{returnTotalDiscount(item.disValue,apiCalls.cartInfo[item.name])}}</p></td> -->
+              <td *ngIf="apiCalls.cartInfo[item.name] > 0" class="tableitem"><p class="itemtext">{{returnNetValuePerItem(item.price,apiCalls.cardInfo_discount[item.name],apiCalls.cartInfo[item.name])}}</p></td>
+            </tr>
+
+
+            <tr class="tabletitle">
+              <td></td>
+              <td class="Rate"><h2>Total Discount</h2></td>
+              <td class="payment"><h2>{{billTotalDiscount}}</h2></td>
+            </tr>
+
+            <tr class="tabletitle">
+              <td></td>
+              <td class="Rate"><h2>Net Value</h2></td>
+              <td class="payment"><h2>{{billTotal}}</h2></td>
+            </tr>
+
+          </table>
+        </div><!--End Table-->
+
+        <div id="legalcopy">
+          <p class="legal"><strong>Thank you for your business! </strong><br> 
+          system by Gneefer ERP. 
+            <span> 
+              Tharindu   : 077-4662797<br>
+              Dulan   : 077-2113745<br>
+            </span>
+          </p>
+        </div>
+
+      </div><!--End InvoiceBot-->
+</div><!--End Invoice-->
+
+<ion-toolbar style="bottom: 0px;position: fixed;margin-top: 40px;">
+  <ion-button expand="block" fill="outline" color="danger" (click)="digitalInvoice()" [disabled]="false" style="margin-bottom: 10px;">Digital Invoice</ion-button>
+  <ion-button expand="block" fill="outline" color="success" (click)="printInvoice()" [disabled]="false">Print Invoice</ion-button>
+</ion-toolbar>

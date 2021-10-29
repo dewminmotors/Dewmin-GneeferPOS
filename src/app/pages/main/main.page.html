@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-grid>
+      <ion-row>
+        <ion-col style="text-align: left;">
+          <ion-title style="padding-top: 5%;">Main</ion-title>
+        </ion-col>
+        <ion-col>
+          <ion-button size = "large" color="danger" style="float: right;" (click)="openCart()">Cart</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>   
+  <ion-toolbar>
+    <ion-searchbar placeholder="Search..." [(ngModel)]="filterTerm" animated="true" showCancelButton= "focus" ></ion-searchbar>
+  </ion-toolbar>
+  <br>
+
+  <ion-grid>
+    
+    <!--Titles-->
+    <ion-row>
+      <ion-col>
+        <ion-card style="text-align:center;"><h5>Item Code</h5></ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card style="text-align:center;"><h5>Item Name</h5></ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card style="text-align:center;"><h5>Stock Amount</h5></ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card style="text-align:center;"><h5>Price</h5></ion-card>
+      </ion-col>
+    </ion-row>
+    <!--End titles-->
+
+    
+    <ion-card *ngFor="let item of returnedItems | filter:filterTerm;let i = index;"  [ngClass]="(item.currentStock == 0) ? 'notavailable' : 'available'" (click)="selectStock(item)">
+      <ion-row  >
+        <ion-col class="long-text">
+          <div class="perElement">{{item.itemId}}</div>
+        </ion-col>
+        <ion-col class="long-text">
+          <div class="perElement">{{item.name}}</div>
+        </ion-col>
+        <ion-col class="long-text">
+          <div class="perElement">{{item.currentStock}}</div>
+        </ion-col>
+        <ion-col class="long-text">
+          <div class="perElement">{{item.price}}</div>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+  </ion-grid>
+  
+
+</ion-content>

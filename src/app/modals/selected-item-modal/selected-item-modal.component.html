@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{apiCalls.selectedStock.name}}</ion-title>
+    <ion-button color="danger" slot="end" (click)="closeBTN()">
+      <ion-icon  name="close"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>Quantity</ion-card-header>
+    <ion-grid style="margin-left:30%;margin-bottom:0px; padding-top: 2%;">
+      <ion-row>
+        <ion-col class="flex_row">
+            <ion-button style="font-size: 20px;height: 50px;" (click)="decrement()" color="light"><ion-icon name="remove-circle-outline"></ion-icon></ion-button>
+            <p style="font-size: 50px;margin-top: 0px;padding-left: 10px;padding-right: 10px; color: black;"> {{quantity}} </p>
+            <ion-button style="font-size: 20px;height: 50px;" (click)="increment()" color="light"><ion-icon name="add-circle-outline"></ion-icon></ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>Discount</ion-card-header>
+
+    <ion-list lines="full" class="ion-no-margin">
+      <ion-item>
+        <ion-input [(ngModel)]="disValue" type="number" min = "0" max = "25"></ion-input>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-toolbar style="bottom: 0px;position: fixed;margin-top: 40px;">
+    <ion-button expand="block" fill="outline" color="danger" (click)="addBTN()" [disabled]="false" >Add</ion-button>
+  </ion-toolbar>
+
+</ion-content>

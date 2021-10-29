@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cart</ion-title>
+    <ion-button color="danger" slot="end" (click)="closeBTN()">
+      <ion-icon  name="close"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    
+    <!--Titles-->
+    <ion-row>
+      <ion-col>
+        <ion-card style="text-align:center;"><h6>Name</h6></ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card style="text-align:center;"><h6>Quantity</h6></ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card style="text-align:center;"><h6>price</h6></ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card style="text-align:center;"><h6>discount</h6></ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card style="text-align:center;"><h6>Net value</h6></ion-card>
+      </ion-col>
+    </ion-row>
+    <!--End titles-->
+
+    
+    <ion-card *ngFor="let item of apiCalls.cartItems"  [ngClass]="'available'">
+      <ion-row>
+        <ion-col class="long-text">
+          <div class="perElement">{{item.name}}</div>
+        </ion-col>
+        <ion-col class="long-text">
+          <div class="perElement">
+            <div class="flex_row">
+              <ion-button style="font-size: 10px;height: 22px;" (click)="decrement(item)" color="light"><ion-icon name="remove-circle-outline"></ion-icon></ion-button>
+                <p style="font-size: 18px;margin-top: 2.5px;padding-left: 5px;padding-right: 5px;"> {{apiCalls.cartInfo[item.name]}} </p>
+              <ion-button style="font-size: 10px;height: 22px;" (click)="increment(item)" color="light"><ion-icon name="add-circle-outline"></ion-icon></ion-button>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col class="long-text">
+          <div class="perElement">{{item.price}}</div>
+        </ion-col>
+        <ion-col class="long-text">
+          <div class="perElement">{{returnTotalDiscount(apiCalls.cardInfo_discount[item.name],apiCalls.cartInfo[item.name])}}</div>
+        </ion-col>
+        <ion-col class="long-text">
+          <div class="perElement">{{returnNetValue(item.price,apiCalls.cartInfo[item.name],apiCalls.cardInfo_discount[item.name])}}</div>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+  </ion-grid>
+  
+ <br>
+ <br>
+
+  <ion-toolbar style="bottom: 0px;position: fixed;margin-top: 40px;">
+    <ion-button expand="block" fill="outline" color="success" (click)="checkout()" [disabled]="false">checkout</ion-button>
+  </ion-toolbar>
+</ion-content>
