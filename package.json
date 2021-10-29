@@ -24,7 +24,9 @@
     "ng2-search-filter": "^0.5.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
-    "zone.js": "~0.11.4",
+    "zone.js": "~0.11.4"
+  },
+  "devDependencies": {
     "@angular-devkit/build-angular": "~12.1.1",
     "@angular-eslint/builder": "~12.0.0",
     "@angular-eslint/eslint-plugin": "~12.0.0",
@@ -56,8 +58,6 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "typescript": "~4.2.4"
-  },
-  "devDependencies": {
   },
   "description": "An Ionic project"
 }
