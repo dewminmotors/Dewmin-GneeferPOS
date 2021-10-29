@@ -28,6 +28,12 @@ export class invoiceItem {
   brandName:String;
 }
 
+export class user{
+  username:string;
+  password:string;
+}
+
+//END
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +46,7 @@ export class ApiCallsService {
 
   stocksReturnEndpoint = 'https://dewmin-gneeferserver.herokuapp.com/api/stock/';
   itemNameEndpoint = "https://dewmin-gneeferserver.herokuapp.com/api/item/namebyid/";
+  loginEndpoint = 'https://dewmin-gneeferserver.herokuapp.com/api/auth/signin';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -55,6 +62,11 @@ export class ApiCallsService {
 
   //used in returns
   selectedInvoice:any
+
+  //used in login page
+  requirePane = false
+  loggedInstat = false
+  //End
 
   constructor(
     private httpClient: HttpClient,
@@ -89,6 +101,11 @@ export class ApiCallsService {
   
       await alert.present();
     }
+
+    logOut(){
+      this.presentLoading("Logging out")
+      this.router.navigate(['/login'])
+    }
   
     //#endregion
 
@@ -112,6 +129,12 @@ export class ApiCallsService {
   getItemName(_itemId): Observable<any> {
     return this.httpClient.get(this.itemNameEndpoint + _itemId )
   }
+
+    //#region user_login
+    userLogin(creds:user): Observable<any> {
+      return this.httpClient.post<user>(this.loginEndpoint, JSON.stringify(creds), this.httpOptions)
+    }
+    //#endregion
 
     //Url Encoder section
     encodeURL(){

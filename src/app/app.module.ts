@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
+import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -17,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
      IonicModule.forRoot(), 
      AppRoutingModule,
      RouterModule,
-     HttpClientModule
+     HttpClientModule,
+     BackButtonDisableModule.forRoot()
     ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
