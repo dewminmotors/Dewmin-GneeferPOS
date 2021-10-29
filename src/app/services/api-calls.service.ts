@@ -35,11 +35,11 @@ export class invoiceItem {
 export class ApiCallsService {
   
 
-  stocksEndpoint = 'https://gneeferserver.herokuapp.com/api/stock/branchCode/KUL/';  //Hard coded branch id 
-  invoiceEndpoint = 'https://gneeferserver.herokuapp.com/api/invoice/';
+  stocksEndpoint = 'https://dewmin-gneeferserver.herokuapp.com/api/stock/branchCode/KUL/';  //Hard coded branch id 
+  invoiceEndpoint = 'https://dewmin-gneeferserver.herokuapp.com/api/invoice/';
 
-  stocksReturnEndpoint = 'https://gneeferserver.herokuapp.com/api/stock/';
-  itemNameEndpoint = "https://gneeferserver.herokuapp.com/api/item/namebyid/";
+  stocksReturnEndpoint = 'https://dewmin-gneeferserver.herokuapp.com/api/stock/';
+  itemNameEndpoint = "https://dewmin-gneeferserver.herokuapp.com/api/item/namebyid/";
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
