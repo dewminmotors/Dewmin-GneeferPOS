@@ -50,7 +50,7 @@ export class InvoiceModalComponent implements OnInit {
         disc:this.apiCalls.cardInfo_discount[e.name] * (e.price/100),
         discPrice: e.price * this.apiCalls.cartInfo[e.name] - this.apiCalls.cardInfo_discount[e.name] * (e.price/100) * this.apiCalls.cartInfo[e.name],
         qty:this.apiCalls.cartInfo[e.name],
-        brandName:""
+        brandName:e.brandName
       }
 
       this.invoiceData.purchases.push(JSON.parse(JSON.stringify(i)));

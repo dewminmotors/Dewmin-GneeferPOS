@@ -32,7 +32,6 @@ export class MainPage implements OnInit {
 
   onKey(event: any) {
     this.barcode=event.target.value;
-    //console.log(this.barcode)
   }
 
   getAllStocks(){
