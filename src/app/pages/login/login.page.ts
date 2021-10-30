@@ -16,12 +16,13 @@ export class LoginPage implements OnInit {
     private loadingCtrl:LoadingController,
     private route:ActivatedRoute
   ) { 
-    route.params.subscribe(val => {
-      if(apicalls.requirePane){
-        apicalls.requirePane = false;
-        window.location.reload()
-      }
-    });
+    apicalls.requirePane = false;
+    // route.params.subscribe(val => {
+    //   if(apicalls.requirePane){
+    //     apicalls.requirePane = false;
+    //     window.location.reload()
+    //   }
+    // });
   }
 
   loginCreds : user = {

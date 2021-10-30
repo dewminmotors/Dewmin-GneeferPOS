@@ -64,7 +64,7 @@ export class ApiCallsService {
   selectedInvoice:any
 
   //used in login page
-  requirePane = false
+  requirePane = true
   loggedInstat = false
   //End
 
