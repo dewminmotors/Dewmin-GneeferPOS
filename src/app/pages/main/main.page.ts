@@ -16,6 +16,8 @@ export class MainPage implements OnInit {
   filterTerm:string;
   returnedItems = [];
 
+  barcode: string='';
+
   constructor(
     public apicalls :ApiCallsService,
     private modalCtrl: ModalController,
@@ -26,6 +28,11 @@ export class MainPage implements OnInit {
   ngOnInit() {
     this.getAllStocks();
     this.apicalls.encodeURL();
+  }
+
+  onKey(event: any) {
+    this.barcode=event.target.value;
+    //console.log(this.barcode)
   }
 
   getAllStocks(){

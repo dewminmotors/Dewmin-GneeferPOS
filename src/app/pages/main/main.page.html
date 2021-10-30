@@ -19,8 +19,12 @@
 <ion-content>   
   <ion-toolbar>
     <ion-searchbar placeholder="Search..." [(ngModel)]="filterTerm" animated="true" showCancelButton= "focus" ></ion-searchbar>
-  </ion-toolbar>
+  </ion-toolbar>    
   <br>
+  <div class="row">
+    <span>barcode:</span> 
+    <input type="text" (window:keypress)="onKey($event)"  autofocus />
+  </div>
 
   <ion-grid>
     
