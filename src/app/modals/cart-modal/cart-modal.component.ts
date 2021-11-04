@@ -24,11 +24,11 @@ export class CartModalComponent implements OnInit {
 
 
   returnTotalDiscount(perprice,perDiscount,quantity){
-    return ((perprice*perDiscount)/100) * quantity;
+    return Math.round(((perprice*perDiscount)/100) * quantity);
   }
 
   returnNetValue(perPrice,quantity,perDiscount){
-    var totalDis = Math.round(this.returnTotalDiscount(perPrice,perDiscount,quantity));
+    var totalDis = this.returnTotalDiscount(perPrice,perDiscount,quantity);
     return (perPrice*quantity) - totalDis;
   }
 
