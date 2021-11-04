@@ -108,15 +108,14 @@ export class InvoiceModalComponent implements OnInit {
           WindowPrt.close();
       
           this.closeBTN();
+          this.apiCalls.cartItems = []
+          this.apiCalls.cartInfo ={}
         }
 
         this.apiCalls.presentAlert("Done",true);
       },
       (error) => {    
       })
-
-    this.apiCalls.cartItems = []
-    this.apiCalls.cartInfo ={}
   }
 
 }
