@@ -55,6 +55,7 @@ export class MainPage implements OnInit {
   }
 
   selectStock(event : any){
+    this.filterTerm = ""
     this.apicalls.selectedStock = event;
     this.selectedStockEvent()
   }
