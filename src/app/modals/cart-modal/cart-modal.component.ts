@@ -23,12 +23,12 @@ export class CartModalComponent implements OnInit {
   }
 
 
-  returnTotalDiscount(perDiscount,quantity){
-    return perDiscount * quantity;
+  returnTotalDiscount(perprice,perDiscount,quantity){
+    return ((perprice*perDiscount)/100) * quantity;
   }
 
   returnNetValue(perPrice,quantity,perDiscount){
-    var totalDis = this.returnTotalDiscount(perDiscount,quantity);
+    var totalDis = this.returnTotalDiscount(perPrice,perDiscount,quantity);
     return (perPrice*quantity) - totalDis;
   }
 
