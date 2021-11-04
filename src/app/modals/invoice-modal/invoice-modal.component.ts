@@ -11,6 +11,7 @@ export class InvoiceModalComponent implements OnInit {
 
   billTotalDiscount:any = 0;
   billTotal:any = 0;
+  invID = 0;
 
   invoiceData : Invoice = {
     username: "",
@@ -81,27 +82,34 @@ export class InvoiceModalComponent implements OnInit {
   }
 
   printInvoice(){
-    this.processInvoice();
-
-    const printContent = document.getElementById("invoice-POS");
-    const WindowPrt = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
-    WindowPrt.document.write(printContent.innerHTML);
-    WindowPrt.document.close();
-    WindowPrt.focus();
-    WindowPrt.print();
-    WindowPrt.close();
-
-    this.closeBTN();
+    this.processInvoice(true);
   }
 
   digitalInvoice(){
-    this.processInvoice();
+    this.processInvoice(false);
   }
 
-  processInvoice(){  
+  processInvoice(onPrint:boolean){  
+  this.apiCalls.presentLoading("Processing Bill")
   this.apiCalls.sendInvoice(this.invoiceData)
     .subscribe(
       (response) => {   
+        this.invID = response.invId;
+        this.apiCalls.loadingController.dismiss();
+
+        if(onPrint){
+          const printContent = document.getElementById("invoice-POS");
+          document.getElementById("invoice-id").innerHTML = this.invID.toString();
+          const WindowPrt = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
+          WindowPrt.document.write(printContent.innerHTML);
+          WindowPrt.document.close();
+          WindowPrt.focus();
+          WindowPrt.print();
+          WindowPrt.close();
+      
+          this.closeBTN();
+        }
+
         this.apiCalls.presentAlert("Done",true);
       },
       (error) => {    
