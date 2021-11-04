@@ -49,7 +49,7 @@
           <div class="perElement">{{item.price}}</div>
         </ion-col>
         <ion-col class="long-text">
-          <div class="perElement">{{returnTotalDiscount(apiCalls.cardInfo_discount[item.name],apiCalls.cartInfo[item.name])}}</div>
+          <div class="perElement">{{returnTotalDiscount(item.price,apiCalls.cardInfo_discount[item.name],apiCalls.cartInfo[item.name])}}</div>
         </ion-col>
         <ion-col class="long-text">
           <div class="perElement">{{returnNetValue(item.price,apiCalls.cartInfo[item.name],apiCalls.cardInfo_discount[item.name])}}</div>
