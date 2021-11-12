@@ -32,7 +32,7 @@ export class SelectedItemModalComponent implements OnInit {
       this.disValue = 0;
     }
 
-    if(this.apiCalls.selectedStock.currentStock >= this.quantity && this.disValue <= 25 && this.disValue >=0){
+    if(this.apiCalls.selectedStock.currentStock >= this.quantity &&  this.disValue >=0){
       if(this.apiCalls.cartItems.includes(this.apiCalls.selectedStock)){
         this.apiCalls.cartInfo[this.apiCalls.selectedStock.name] += this.quantity
       }else{
