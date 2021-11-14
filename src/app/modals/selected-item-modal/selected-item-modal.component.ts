@@ -11,7 +11,7 @@ export class SelectedItemModalComponent implements OnInit {
 
 
   quantity:any = 1;
-  disValue:Number;
+  disValue:any;
 
   constructor(
     public apiCalls:ApiCallsService,
@@ -40,7 +40,13 @@ export class SelectedItemModalComponent implements OnInit {
         this.apiCalls.cartInfo[this.apiCalls.selectedStock.name] = this.quantity
       }
 
-      this.apiCalls.cardInfo_discount[this.apiCalls.selectedStock.name] = this.disValue
+      if(this.disValue > 0)
+      {
+        this.apiCalls.cardInfo_discount[this.apiCalls.selectedStock.name] = (this.apiCalls.selectedStock.price -  this.disValue)
+      }else
+      {
+        this.apiCalls.cardInfo_discount[this.apiCalls.selectedStock.name] = this.disValue
+      }
       this.closeBTN();
     }else{
       this.apiCalls.presentAlert("Invalid request",false)
